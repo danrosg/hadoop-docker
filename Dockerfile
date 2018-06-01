@@ -51,3 +51,6 @@ RUN tar xvf hadoop.tar.gz \
     --exclude=hadoop-3.1.0/share/doc \
     --strip 1
 RUN rm hadoop.tar.gz
+
+COPY core-site.xml $HADOOP_CONF_DIR/
+COPY hdfs-site.xml $HADOOP_CONF_DIR/
