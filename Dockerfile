@@ -28,7 +28,7 @@ RUN rm jdk-8u171-linux-x64.tar.gz
 
 #creating a folder structure for hadoop installation
 
-RUN ["/bin/bash", "-c", "mkdir -p /opt/{hadoop,hdfs/{datanode,namenode}}"]
+RUN ["/bin/bash", "-c", "mkdir -p /opt/{hadoop/logs,hdfs/{datanode,namenode}}"]
 
 ENV JAVA_HOME /opt/jdk/jdk1.8.0_171
 ENV PATH $PATH:$JAVA_HOME/bin
@@ -54,3 +54,7 @@ RUN rm hadoop.tar.gz
 
 COPY core-site.xml $HADOOP_CONF_DIR/
 COPY hdfs-site.xml $HADOOP_CONF_DIR/
+
+RUN hdfs namenode -format
+RUN service ssh start
+#RUN start-dfs.sh
