@@ -56,5 +56,10 @@ COPY core-site.xml $HADOOP_CONF_DIR/
 COPY hdfs-site.xml $HADOOP_CONF_DIR/
 
 RUN hdfs namenode -format
-RUN service ssh start
+
+#RUN service ssh start
 #RUN start-dfs.sh
+
+COPY bootstrap.sh /etc/bootstrap.sh
+
+CMD ["/etc/bootstrap.sh", "-d"]
