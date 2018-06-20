@@ -60,6 +60,8 @@ RUN hdfs namenode -format
 #RUN service ssh start
 #RUN start-dfs.sh
 
+#TODO: I discovered if I add the enviroment variables to the /opt/hadoop/etc/hadoop/hadoop-env.sh  file the start-dfs.sh runs OK
+
 COPY bootstrap.sh /etc/bootstrap.sh
 
 CMD ["/etc/bootstrap.sh", "-d"]
